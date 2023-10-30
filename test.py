@@ -13,19 +13,20 @@ def create_user():
         "initial_balance": 100  # or any desired initial balance
     }
 
-    url = "http://localhost:8080/create_user"  # Replace with your server URL
+    url = "http://localhost:8080/user/create_user"  # Replace with your server URL
 
     headers = {
         "Content-Type": "application/json"
     }
 
     response = requests.post(url, json=data, headers=headers)
-
     print(response.status_code)
     print(response.json())
-def get_balance():
+    return response.json()['user_id']
+
+def get_balance(user_id):
     # Make a GET request to the API endpoint
-    response = requests.get("http://localhost:8080/get_balance/1")
+    response = requests.get(f"http://localhost:8080/user/get_balance/{user_id}")
     # Check the response status code
     if response.status_code == 200:
         # Successful response
@@ -40,14 +41,14 @@ def get_balance():
         # Other errors
         error = response.json()["error"]
         print(f"Error: {error}")
-def use_points():
+def use_points(user_id,points):
     # Replace with your actual data
     data = {
-        "user_id": 1,
-        "points": 100  # or any desired initial balance
+        "user_id": user_id,
+        "points": points  # or any desired initial balance
     }
 
-    url = "http://localhost:8080/use_points"  # Replace with your server URL
+    url = "http://localhost:8080/user/use_points"  # Replace with your server URL
 
     headers = {
         "Content-Type": "application/json"
@@ -57,14 +58,14 @@ def use_points():
 
     print(response.status_code)
     print(response.json())
-def give_points():
+def give_points(user_id,points):
     # Replace with your actual data
     data = {
-        "user_id": 1,
-        "points": 150  # or any desired initial balance
+        "user_id": user_id,
+        "points": points  # or any desired initial balance
     }
 
-    url = "http://localhost:8080/give_points"  # Replace with your server URL
+    url = "http://localhost:8080/user/give_points"  # Replace with your server URL
 
     headers = {
         "Content-Type": "application/json"
@@ -75,10 +76,11 @@ def give_points():
     print(response.status_code)
     print(response.json())
 if __name__=="__main__":
-    create_user()
-    get_balance()
-    use_points()
-    get_balance()
-    give_points()
-    get_balance()
-
+    user_id=create_user()
+    get_balance(user_id)
+    use_points(user_id,200)
+    get_balance(user_id)
+    give_points(user_id,150)
+    get_balance(user_id)
+    use_points(user_id,200)
+    get_balance(user_id)
