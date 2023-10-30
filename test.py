@@ -75,6 +75,17 @@ def give_points(user_id,points):
 
     print(response.status_code)
     print(response.json())
+def get_latest_transactions(user_id):
+    url = f"http://localhost:8080/user/get_latest_transactions/{user_id}"  # Replace with your server URL
+
+    headers = {
+        "Content-Type": "application/json"
+    }
+
+    response = requests.get(url, headers=headers)
+
+    print(response.status_code)
+    print(response.json())
 if __name__=="__main__":
     user_id=create_user()
     get_balance(user_id)
@@ -84,3 +95,4 @@ if __name__=="__main__":
     get_balance(user_id)
     use_points(user_id,200)
     get_balance(user_id)
+    get_latest_transactions(user_id)

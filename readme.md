@@ -78,3 +78,11 @@ The simplePointService provides the following API endpoints for managing user po
 }
 ```
 - Response: A JSON object confirming the transaction.
+
+5. Get Latest Transactions:
+
+- Endpoint: /user/get_latest_transactions/<user_id>
+- HTTP Method: GET
+- Description: Retrieve the latest transaction records of a specific user by their user ID.
+- Request Body:
+- Response: A JSON object containing the user's the latest 10 transaction records.
