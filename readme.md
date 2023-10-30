@@ -26,7 +26,7 @@ cd simplePointService
 docker-compose up
 ```
 Access the Flask app
-Once the environment is up and running, you can access the Flask app in your browser at http://localhost:8080. The app should be available on port 8080 of your local machine.
+Once the environment is up and running, you can access the Flask API via http://localhost:8080. The app should be available on port 8080 of your local machine.
 
 ## API Endpoints
 The simplePointService provides the following API endpoints for managing user points:
