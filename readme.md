@@ -46,10 +46,10 @@ The simplePointService provides the following API endpoints for managing user po
 - Response: A JSON object containing the user_id.
 
 2. Get Balance by User ID:
-Endpoint: /user/get_balance/<user_id>
-HTTP Method: GET
-Description: Retrieve the points balance of a specific user by their user ID.
-Response: A JSON object containing the user's balance.
+- Endpoint: /user/get_balance/<user_id>
+- HTTP Method: GET
+- Description: Retrieve the points balance of a specific user by their user ID.
+- Response: A JSON object containing the user's balance.
 
 3. Give Points:
 
