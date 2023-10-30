@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Use the updated Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    command: ["gunicorn", "app.app:app", "--bind", "0.0.0.0:8080"]  # Start Gunicorn
+    environment:
+      DATABASE_URL: "postgresql://myuser:mypassword@postgres/mydb"  # Use the hostname 'postgres'
+    links:
+      - postgres
+
+  postgres:
+    image: postgres:9.6
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
