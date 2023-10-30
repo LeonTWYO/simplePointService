@@ -39,11 +39,11 @@ The simplePointService provides the following API endpoints for managing user po
 - Request Body:
 ```json
 {
-  "user_id": "unique_user_id",
+  "username": "username",
   "initial_balance": 100
 }
 ```
-- Response: A JSON object containing the user_id.
+- Response: A JSON object containing the serial_user_id.
 
 2. Get Balance by User ID:
 - Endpoint: /user/get_balance/<user_id>
@@ -59,7 +59,7 @@ The simplePointService provides the following API endpoints for managing user po
 - Request Body:
 ```json
 {
-  "user_id": "unique_user_id",
+  "user_id": "serial_user_id",
   "points": 50
 }
 ```
@@ -73,7 +73,7 @@ The simplePointService provides the following API endpoints for managing user po
 - Request Body:
 ```json
 {
-  "user_id": "unique_user_id",
+  "user_id": "serial_user_id",
   "points": 30
 }
 ```
